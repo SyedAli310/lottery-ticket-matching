@@ -37,7 +37,7 @@ matched = false
 function updateCredit(credit){
     localStorage.setItem('credit', credit)
     setTimeout(()=>{
-        $('#credit').html(`<span>Credit</span><h3 class='text-success'>$${localStorage.getItem('credit')}</h3>`)
+        $('#credit').html(`<span>Credit</span><h3 class='text-success rounded bg-dark p-1'><i class='fas fa-dollar-sign fa-sm'></i> ${localStorage.getItem('credit')}</h3>`)
     },100)
 }
 
@@ -291,7 +291,7 @@ $('.token input').on('change',(e)=>{
     }
 })
 
-$('#credit').html(`<span>Credit</span><h3 class='text-success'>$${localStorage.getItem('credit')}</h3>`)
+$('#credit').html(`<span>Credit</span><h3 class='text-success rounded bg-dark p-1'><i class='fas fa-dollar-sign fa-sm'></i> ${localStorage.getItem('credit')}</h3>`)
      
 startBtn.addEventListener('click',()=>{
     if(localStorage.getItem('credit')>=10){

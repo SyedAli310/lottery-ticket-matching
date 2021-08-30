@@ -43,7 +43,7 @@ function updateCredit(credit){
             <div class='d-flex justify-content-center align-items-center'>
                 <h3 class='mb-1'><i class='fas fa-dollar-sign fa-sm'></i>${localStorage.getItem('credit')}</h3>
                 &nbsp;
-                <a href="./credit-earn-game/index.html" class="btn btn-sm btn-outline-success ml-1 px-1 py-0 pt-0"><i class="fas fa-plus fa-sm"></i></a>
+                <a href="./credit-earn-game/index.html" target='_blank' class="btn btn-sm btn-outline-success ml-1 px-1 py-0 pt-0"><i class="fas fa-plus fa-sm"></i></a>
             </div>
         </div>`)
     },100)
@@ -305,12 +305,17 @@ $('#credit').html(`
     <div class='d-flex justify-content-center align-items-center'>
         <h3 class='mb-1'><i class='fas fa-dollar-sign fa-sm'></i>${localStorage.getItem('credit')}</h3>
         &nbsp;
-        <a href="./credit-earn-game/index.html" class="btn btn-sm btn-outline-success ml-1 px-1 py-0 pt-0"><i class="fas fa-plus fa-sm"></i></a>
+        <a href="./credit-earn-game/index.html" target='_blank' class="btn btn-sm btn-outline-success ml-1 px-1 py-0 pt-0"><i class="fas fa-plus fa-sm"></i></a>
     </div>
 </div>`)
-     
+
+setInterval(() => {
+    credit = parseInt(localStorage.getItem('credit'))
+    updateCredit(credit)
+},1000);
+  
 startBtn.addEventListener('click',()=>{
-    if(localStorage.getItem('credit')>=10){
+    if(credit>=10){
         counter=20
         score = []
         points=0

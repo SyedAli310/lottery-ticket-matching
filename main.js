@@ -1,5 +1,4 @@
 
-
 const div = document.querySelector('#dyn-array')
 
 const one = document.querySelector('#one')
@@ -33,6 +32,13 @@ let points = 0
 
 matched = false
 
+function closeAlert(){
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove(); 
+        });
+    }, 4000);
+}
 
 function updateCredit(credit){
     localStorage.setItem('credit', credit)
@@ -273,11 +279,16 @@ function start(){
 }
 
 function displayToken(){
-    $('.token input:nth-child(1)').val(`${token[0]}`)
-    $('.token input:nth-child(2)').val(`${token[1]}`)
-    $('.token input:nth-child(3)').val(`${token[2]}`)
-    $('.token input:nth-child(4)').val(`${token[3]}`)
-    $('.token input:nth-child(5)').val(`${token[4]}`)
+    $('#regen-btn').html(`<div class="spinner-border spinner-border-sm" role="status"></div>`)
+    setTimeout(()=>{
+        $('#regen-btn').html(`<i class="fas fa-redo-alt"></i>&nbsp; new token`)
+
+        $('.token input:nth-child(1)').val(`${token[0]}`)
+        $('.token input:nth-child(2)').val(`${token[1]}`)
+        $('.token input:nth-child(3)').val(`${token[2]}`)
+        $('.token input:nth-child(4)').val(`${token[3]}`)
+        $('.token input:nth-child(5)').val(`${token[4]}`)
+    },1500)
 }
 displayToken()
 function regenerate(token){
@@ -294,7 +305,13 @@ $('.token input').on('change',(e)=>{
         token[$(e.target).index()] = parseInt($(e.target).val())
     }
     if(parseInt($(e.target).val()) >= 100 || parseInt($(e.target).val()) < 0){
-        $('.info-note').after(`<p class='text-danger text-center err'>Please enter numbers from 0 to 99</p>`)
+        $('.info-note').after(`
+        <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> Please enter numbers from 0 to 99
+      </div>
+        `)
+        closeAlert()
         displayToken()
     }
 })

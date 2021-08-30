@@ -47,14 +47,19 @@ input[type=number]:focus, input[type=number]:active{
     word-break: keep-all;
 }
 .err{
-    animation: disappear 5s ease forwards 1s;
+    animation: disappear 5s ease linear forwards;
 }
 
 @keyframes disappear {
+    from{
+        opacity: 1;
+        visibility: visible;
+        display: block; 
+    }
     to{
         opacity: 0;
         visibility: hidden;
-        display: none;
+        display: none; 
     }
 }
 

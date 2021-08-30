@@ -18,12 +18,28 @@ const showToken = document.querySelector('.token')
 
 let token = [34,53,45,67,99]
 
+var credit;
+
+if(localStorage.getItem('credit') == null){
+    credit = 50
+    localStorage.setItem('credit', credit)
+}else{
+    credit = parseInt(localStorage.getItem('credit'))
+}
+
+
 let score = []
 let points = 0
 
 matched = false
 
 
+function updateCredit(credit){
+    localStorage.setItem('credit', credit)
+    setTimeout(()=>{
+        $('#credit').html(`<span>Credit</span><h3 class='text-success'>$${localStorage.getItem('credit')}</h3>`)
+    },100)
+}
 
 
 function start(){
@@ -212,7 +228,7 @@ function start(){
         generateRandomArray()
         fillArray()
         matchToken()
-    }, 5)
+    }, 10)
     
     
     var timer = setInterval(()=>{
@@ -226,6 +242,7 @@ function start(){
             $([document.documentElement, document.body]).animate({
                 scrollTop: $(".timeUp").offset().top
             }, 1000);
+            $('#start').removeAttr('disabled')
             clearInterval(x)
             clearInterval(timer)
             counter = 0
@@ -234,10 +251,12 @@ function start(){
             time.innerHTML = `<h2 class='text-center text-monospace'>${counter}</h2>`
             setTimeout(()=>{
                 points=points+(score.length * 10)
+                credit += points
+                updateCredit(credit)
                 if(score.length>0){
-                    timeUp.innerHTML = `<p style='color:red;'>Times Up!</p><p>You won <span style='color:green'>${(points)}</span> points. <p style='font-size:small !important;'> 10 points for each matching pair, and 5 bonus points for each consecutive matching pair.</p></p>`
+                    timeUp.innerHTML = `<p style='color:red;'>Times Up!</p><p>You won <span style='color:green'>$${(points)}</span> credit. <p style='font-size:small !important;'> 10 points for each matching pair, and 5 bonus points for each consecutive matching pair.</p></p>`
                 }else{
-                    timeUp.innerHTML = `<p style='color:red;'>Times Up!</p><p>Your won <span style='color:red'>${(points)}</span> points. <p style='font-size:small !important;'> Better luck next time☹️</p></p>`
+                    timeUp.innerHTML = `<p style='color:red;'>Times Up!</p><p>Your won <span style='color:red'>$${(points)}</span> credit. <p style='font-size:small !important;'> Better luck next time☹️</p></p>`
                 }
             },100)
         }
@@ -272,18 +291,27 @@ $('.token input').on('change',(e)=>{
     }
 })
 
+$('#credit').html(`<span>Credit</span><h3 class='text-success'>$${localStorage.getItem('credit')}</h3>`)
      
 startBtn.addEventListener('click',()=>{
-    $([document.documentElement, document.body]).animate({
-        scrollTop: $("body").offset().top
-    }, 1000);
-    counter=20
-    score = []
-    points=0
-    msg.innerHTML=``
-    timeUp.innerHTML =``
-    start()
-    msg.innerHTML=`<h3 class='text-center text-success'>Matched Pairs..</h3>`
-    console.log('Lottery token: ',token)
+    if(localStorage.getItem('credit')>=10){
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $("body").offset().top
+        }, 1000);
+        counter=20
+        score = []
+        points=0
+        msg.innerHTML=``
+        timeUp.innerHTML =``
+        credit-=10
+        updateCredit(credit)
+        start()
+        $('#start').attr('disabled','disabled')
+        msg.innerHTML=`<h3 class='text-center text-success'>Matched Pairs..</h3>`
+        console.log('Lottery token: ',token)
+    }
+    else{
+        alert('Your dont have enough credit to play the lottery.')
+    }
 })
  

@@ -76,7 +76,23 @@ input[type=number]:focus, input[type=number]:active{
         transform: scale(1.125);
     }  
 }
-
+.earn-span{
+    position: absolute;
+    transform: translateX(50%);
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    transition: all ease 300ms;
+}
+.earn-btn{
+    z-index: 2;
+    transition: all ease 300ms;
+}
+.earn-btn:hover + .earn-span{
+    transform: translateX(0);
+    visibility: visible;
+    opacity: 1;
+}
 /* @media (max-width:768px){
     #dyn-array{
         flex-direction: column !important;

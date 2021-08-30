@@ -1,3 +1,4 @@
+
 /* Chrome, Safari, Edge, Opera */
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
@@ -24,7 +25,7 @@ input[type=number]:focus, input[type=number]:active{
 
 .msg,.timeUp{
     font-size: xx-large;
-   
+    min-height: 10vh;
 }
 .matched-info{
     margin: 10px;

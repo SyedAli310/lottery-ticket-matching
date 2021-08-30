@@ -171,7 +171,7 @@ function start(){
             clearInterval(x)
             clearInterval(timer)
             counter = 0
-            time.innerHTML = `<h3 class='text-center'>${counter}</h3>`
+            time.innerHTML = `<h2 class='text-center text-monospace'>${counter}</h2>`
 
             one.style.background='green'
             two.style.background='green'
@@ -216,7 +216,7 @@ function start(){
     
     
     var timer = setInterval(()=>{
-        time.innerHTML = `<h3 class='text-center'>${counter}</h3>`
+        time.innerHTML = `<h2 class='text-center text-monospace'>${counter}</h2>`
         if(counter>0)
         counter--
     },1000)
@@ -228,7 +228,7 @@ function start(){
             counter = 0
             arr = ['_','_','_','_','_']
             fillArray()
-            time.innerHTML = `<h3 class='text-center'>${counter}</h3>`
+            time.innerHTML = `<h2 class='text-center text-monospace'>${counter}</h2>`
             setTimeout(()=>{
                 points=points+(score.length * 10)
                 if(score.length>0){
@@ -260,14 +260,16 @@ function regenerate(token){
 }
 
 $('.token input').on('change',(e)=>{
-    if(!isNaN(parseInt($(e.target).val()))){
+    if(!isNaN(parseInt($(e.target).val())) && parseInt($(e.target).val()) < 100){
         token[$(e.target).index()] = parseInt($(e.target).val())
+    }
+    if(parseInt($(e.target).val()) >= 100){
+        $('.info-note').append().html(`<p class='text-danger'>Please enter numbers below or euqal to 99</p>`)
+        displayToken()
     }
 })
 
      
-
-
 startBtn.addEventListener('click',()=>{
     counter=20
     score = []

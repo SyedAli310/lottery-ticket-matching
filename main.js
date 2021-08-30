@@ -223,6 +223,7 @@ function start(){
     
     setTimeout(()=>{
         if(!matched){
+            time.scrollIntoView(true)
             clearInterval(x)
             clearInterval(timer)
             counter = 0

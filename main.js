@@ -195,7 +195,7 @@ function start(){
             clearInterval(x)
             clearInterval(timer)
             counter = 0
-            time.innerHTML = `<h2 class='text-center text-monospace text-muted'>Time left: <span class='text-dark'> ${counter}</span></h2>`
+            time.innerHTML = `<h2 class='text-center text-monospace text-muted'>Time left:<span class='text-dark'>${counter}</span></h2>`
 
             one.style.background='green'
             two.style.background='green'
@@ -240,7 +240,7 @@ function start(){
     
     
     var timer = setInterval(()=>{
-        time.innerHTML = `<h2 class='text-center text-monospace text-muted'>Time left: <span class='text-dark'> ${counter}</span></h2>`
+        time.innerHTML = `<h2 class='text-center text-monospace text-muted'>Time left:<span class='text-dark'>${counter}</span></h2>`
         if(counter>0)
         counter--
     },1000)
@@ -256,7 +256,7 @@ function start(){
             counter = 0
             arr = ['_','_','_','_','_']
             fillArray()
-            time.innerHTML = `<h2 class='text-center text-monospace text-muted'>Time left: <span class='text-dark'> ${counter}</span></h2>`
+            time.innerHTML = `<h2 class='text-center text-monospace text-muted'>Time left:<span class='text-dark'>${counter}</span></h2>`
             setTimeout(()=>{
                 points=points+(score.length * 10)
                 credit += points

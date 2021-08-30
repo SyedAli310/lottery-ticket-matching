@@ -223,7 +223,10 @@ function start(){
     
     setTimeout(()=>{
         if(!matched){
-            time.scrollIntoView(true)
+            time.scrollIntoView({
+                behavior: "smooth", // or "auto" or "instant"
+                block: "start" // or "end"
+            })
             clearInterval(x)
             clearInterval(timer)
             counter = 0

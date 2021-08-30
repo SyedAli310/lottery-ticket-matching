@@ -38,7 +38,7 @@ function start(){
                     one.style.animation = ''
                     two.style.animation = ''
                 }, 1000);
-                msg.innerHTML += `<span class='matched-info'>(1,2) Matched!</span>`
+                msg.innerHTML += `<span class='matched-info'>(1,2)</span>`
                 score.push('1,2')
                 points+=5
                 console.log(score)
@@ -52,7 +52,7 @@ function start(){
                     one.style.animation = ''
                     three.style.animation = ''
                 }, 1000);
-                msg.innerHTML += `<span  class='matched-info'>(1,3) Matched!</span>`  
+                msg.innerHTML += `<span  class='matched-info'>(1,3)</span>`  
                 score.push('1,3')
                 console.log(score)
             }  
@@ -65,7 +65,7 @@ function start(){
                     one.style.animation = ''
                     four.style.animation = ''
                 }, 1000);
-                msg.innerHTML += `<span  class='matched-info'>(1,4) Matched!</span>` 
+                msg.innerHTML += `<span  class='matched-info'>(1,4)</span>` 
                 score.push('1,4')
                 console.log(score)
             }
@@ -78,7 +78,7 @@ function start(){
                     one.style.animation = ''
                     five.style.animation = ''
                 }, 1000);
-                msg.innerHTML += `<span  class='matched-info'>(1,5) Matched!</span>` 
+                msg.innerHTML += `<span  class='matched-info'>(1,5)</span>` 
                 score.push('1,5')
                 console.log(score)
             }  
@@ -92,7 +92,7 @@ function start(){
                     two.style.animation = ''
                     three.style.animation = ''
                 }, 1000);
-                msg.innerHTML += `<span  class='matched-info'>(2,3) Matched!</span>` 
+                msg.innerHTML += `<span  class='matched-info'>(2,3)</span>` 
                 score.push('2,3')
                 points+=5
                 console.log(score)
@@ -107,7 +107,7 @@ function start(){
                     two.style.animation = ''
                     four.style.animation = ''
                 }, 1000);
-                msg.innerHTML += `<span  class='matched-info'>(2,4) Matched!</span>`  
+                msg.innerHTML += `<span  class='matched-info'>(2,4)</span>`  
                 score.push('2,4')
                 console.log(score)
             }
@@ -120,7 +120,7 @@ function start(){
                     two.style.animation = ''
                     five.style.animation = ''
                 }, 1000);
-                msg.innerHTML += `<span  class='matched-info'>(2,5) Matched!</span>`
+                msg.innerHTML += `<span  class='matched-info'>(2,5)</span>`
                 score.push('2,5')
                 console.log(score)
             }  
@@ -133,7 +133,7 @@ function start(){
                     three.style.animation = ''
                     four.style.animation = ''
                 }, 1000);
-                msg.innerHTML += `<span  class='matched-info'>(3,4) Matched!</span>`
+                msg.innerHTML += `<span  class='matched-info'>(3,4)</span>`
                 score.push('3,4')
                 points+=5
                 console.log(score)
@@ -147,7 +147,7 @@ function start(){
                     three.style.animation = ''
                     five.style.animation = ''
                 }, 1000);
-                msg.innerHTML += `<span  class='matched-info'>(3,5) Matched!</span>` 
+                msg.innerHTML += `<span  class='matched-info'>(3,5)</span>` 
                 score.push('3,5')
                 console.log(score)
             } 
@@ -160,7 +160,7 @@ function start(){
                     four.style.animation = ''
                     five.style.animation = ''
                 }, 1000);
-                msg.innerHTML += `<span  class='matched-info'>(4,5) Matched!</span>`
+                msg.innerHTML += `<span  class='matched-info'>(4,5)</span>`
                 score.push('4,5')
                 points+=5
                 console.log(score)
@@ -185,7 +185,7 @@ function start(){
             four.style.animation='enlarge 2s ease infinite'
             five.style.animation='enlarge 2s ease infinite'
 
-            msg.innerHTML = `<span style='color:green';'>All Matched!</span>`
+            msg.innerHTML = `<span style='color:green';'>All matched! <br> Congrats! You have won the lottery.</span>`
             msg.style.animation = 'enlarge 2s ease infinite'
         }
          
@@ -216,7 +216,7 @@ function start(){
     
     
     var timer = setInterval(()=>{
-        time.innerHTML = counter
+        time.innerHTML = `<h3 class='text-center'>${counter}</h3>`
         if(counter>0)
         counter--
     },1000)
@@ -242,14 +242,30 @@ function start(){
     
 }
 
-showToken.innerHTML= `Lottery Token: ${token}`
-
+function displayToken(){
+    $('.token input:nth-child(1)').val(`${token[0]}`)
+    $('.token input:nth-child(2)').val(`${token[1]}`)
+    $('.token input:nth-child(3)').val(`${token[2]}`)
+    $('.token input:nth-child(4)').val(`${token[3]}`)
+    $('.token input:nth-child(5)').val(`${token[4]}`)
+}
+displayToken()
 function regenerate(token){
     token.forEach((index,value)=>{
         token[value] = Math.floor(Math.random() * 100)
     })
-    showToken.innerHTML= `Lottery Token: ${token}`
+    setTimeout(()=>{
+        displayToken()
+    },100)
 }
+
+$('.token input').on('change',(e)=>{
+    if(!isNaN(parseInt($(e.target).val()))){
+        token[$(e.target).index()] = parseInt($(e.target).val())
+    }
+})
+
+     
 
 
 startBtn.addEventListener('click',()=>{
@@ -259,6 +275,7 @@ startBtn.addEventListener('click',()=>{
     msg.innerHTML=``
     timeUp.innerHTML =``
     start()
-    
+    msg.innerHTML=`<h3 class='text-center text-success'>Matched</h3>`
+    console.log(token)
 })
  

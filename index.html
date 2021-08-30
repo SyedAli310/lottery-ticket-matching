@@ -29,32 +29,47 @@
 
 <title>Lottery-Ticket-Matching</title>
 
-<body >
+<body class="m-3 m-md-4 m-sm-4">
 
-    <div id="dyn-array" style="display: flex; justify-content: flex-start; align-items: center; gap: 5px; flex-wrap: wrap;">
-    
-        <div id="one" ></div>
-        <div id="two" ></div>
-        <div id="three" ></div>
-        <div id="four" ></div>
-        <div id="five" ></div>
+<main class="w-100 p-4">
 
+    <div id="dyn-array" class="w-100 d-flex justify-content-center align-items-center flex-wrap border border-primary rounded-lg">
+        <h1 id="one" class="m-2 py-2 text-wrap rounded-lg text-primary text-center">__</h1>
+        <h1 id="two" class="m-2 py-2 text-wrap rounded-lg text-primary text-center">__</h1>
+        <h1 id="three" class="m-2 py-2 text-wrap rounded-lg text-primary text-center">__</h1>
+        <h1 id="four" class="m-2 py-2 text-wrap rounded-lg text-primary text-center">__</h1>
+        <h1 id="five" class="m-2 py-2 text-wrap rounded-lg text-primary text-center">__</h1>
     </div>
 
     <div id="time"></div>
 
     <div style="display: flex; flex-direction: column;">
-        <div class="msg"style="text-align: center;"></div>
+        <div class="msg text-center bg-dark rounded-lg p-2 my-2"></div>
         <br>
         <div class="timeUp" style="text-align: center;"></div>
     </div>
 
-    <button id="start">Start</button>
+    <div class="text-center">
+        <button class="btn btn-sm btn-outline-success mb-3" id="start">Start matching...</button>
+    </div>
+    <br>
 
-    
-        <div class="token"></div>
-        <button onclick="regenerate(token)">Regenerate Token</button>
+    <span class="d-flex justify-content-center align-items-baseline flex-wrap">
+        <p>Lottery Token:&nbsp;</p>
+        <div class="token text-center text-nowrap text-monospace">
+            <input type="number" min="0" max="99" class='text-center border-0 bg-dark rounded p-2 text-light' required>
+            <input type="number" min="0" max="99" class='text-center border-0 bg-dark rounded p-2 text-light' required>
+            <input type="number" min="0" max="99" class='text-center border-0 bg-dark rounded p-2 text-light' required>
+            <input type="number" min="0" max="99" class='text-center border-0 bg-dark rounded p-2 text-light' required>
+            <input type="number" min="0" max="99" class='text-center border-0 bg-dark rounded p-2 text-light' required>
+        </div>
+        &nbsp;&nbsp;
+        <button class="btn btn-sm btn-outline-primary mb-3 mt-2" onclick="regenerate(token)"><i class="fas fa-redo-alt"></i></button>
+        <br>
+    </span>
+    <p class="text-muted text-center small"><i class="fas fa-info-circle"></i> Your can also add custom values to your lottery token.</p>
 
+</main>
 
     
 </body>

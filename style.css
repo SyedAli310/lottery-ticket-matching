@@ -1,13 +1,24 @@
-body{
-    display: grid;
-    place-items: center;
+/* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input[type=number]:focus, input[type=number]:active{
+  border: 1px solid lightblue;
+  outline: none;
+}
 
 #one,#two,#three,#four,#five{
+    width: 60px;
     user-select: none;
-    font-size: 100px;
-    background:#1b1b1b; color:white; border-radius:10px; height:140px; width:130px; text-align:center; padding: 10px 10px;
+    background: #1b1b1b;
     transition: all ease 300ms;
 }
 
@@ -19,7 +30,7 @@ body{
     margin: 10px;
     margin-bottom: 15px;
     padding: 10px;
-    color: green;
+    color: #28a745;
     border-radius: 4px;
     word-break: keep-all;
 }
@@ -38,11 +49,25 @@ body{
 
 @keyframes greenFlash {
     from{
-        background-color: #1b1b1b;
+        background: #1b1b1b;
         transform: scale(1) ;
     }
     to{
-        background-color: green;
-        transform: scale(1.025);
+        background: green;
+        color: white;
+        transform: scale(1.125);
     }  
 }
+
+/* @media (max-width:768px){
+    #dyn-array{
+        flex-direction: column !important;
+    }
+    #one,#two,#three,#four,#five{
+        height: auto;
+        width: 10vw;
+        user-select: none;
+        background: #1b1b1b;
+        transition: all ease 300ms;
+    }
+} */

@@ -23,9 +23,9 @@ input[type=number]:focus, input[type=number]:active{
     transition: all ease 300ms;
 }
 
-.msg,.timeUp{
+.msg{
     font-size: xx-large;
-    min-height: 10vh;
+    min-height: 15vh;
 }
 .matched-info{
     margin: 10px;

@@ -171,7 +171,7 @@ function start(){
             clearInterval(x)
             clearInterval(timer)
             counter = 0
-            time.innerHTML = counter
+            time.innerHTML = `<h3 class='text-center'>${counter}</h3>`
 
             one.style.background='green'
             two.style.background='green'
@@ -228,7 +228,7 @@ function start(){
             counter = 0
             arr = ['_','_','_','_','_']
             fillArray()
-            time.innerHTML = counter
+            time.innerHTML = `<h3 class='text-center'>${counter}</h3>`
             setTimeout(()=>{
                 points=points+(score.length * 10)
                 if(score.length>0){

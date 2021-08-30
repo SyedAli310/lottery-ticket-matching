@@ -1,64 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lottery-Ticket-Matching</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A simple popping game." />
+
+   <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+   <script src="https://cdn.lordicon.com/libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+
+   <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+    crossorigin="anonymous"
+  />
+
+   <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" href="#" />
+  <link rel="icon" href="./img/pop.png" type="image/x-icon" />
 </head>
 
-<style>
-    body{
-        display: grid;
-        place-items: center;
-    }
+<title>Lottery-Ticket-Matching</title>
 
-
-    #one,#two,#three,#four,#five{
-        user-select: none;
-        font-size: 100px;
-        background:#1b1b1b; color:white; border-radius:10px; height:140px; width:130px; text-align:center; padding: 10px 10px;
-        transition: all ease 300ms;
-    }
-
-    .msg,.timeUp{
-        font-size: xx-large;
-       
-    }
-    .matched-info{
-        margin: 10px;
-        margin-bottom: 15px;
-        padding: 10px;
-        color: green;
-        border-radius: 4px;
-        word-break: keep-all;
-    }
-
-    @keyframes enlarge{
-        0%{
-            transform: scale(1);
-        }
-        50%{
-            transform: scale(1.095);
-        }
-        100%{
-            transform: scale(1);
-        }
-    }
-
-    @keyframes greenFlash {
-        from{
-            background-color: #1b1b1b;
-            transform: scale(1) ;
-        }
-        to{
-            background-color: green;
-            transform: scale(1.025);
-        }  
-    }
-</style>
 <body >
-
 
     <div id="dyn-array" style="display: flex; justify-content: flex-start; align-items: center; gap: 5px; flex-wrap: wrap;">
     
@@ -85,6 +56,20 @@
         <button onclick="regenerate(token)">Regenerate Token</button>
 
 
-    <script src="./test.js"></script>
+    
 </body>
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <!-- Custom JavaScript -->
+  <script src="./main.js"></script>
 </html>

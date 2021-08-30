@@ -1,0 +1,48 @@
+body{
+    display: grid;
+    place-items: center;
+}
+
+
+#one,#two,#three,#four,#five{
+    user-select: none;
+    font-size: 100px;
+    background:#1b1b1b; color:white; border-radius:10px; height:140px; width:130px; text-align:center; padding: 10px 10px;
+    transition: all ease 300ms;
+}
+
+.msg,.timeUp{
+    font-size: xx-large;
+   
+}
+.matched-info{
+    margin: 10px;
+    margin-bottom: 15px;
+    padding: 10px;
+    color: green;
+    border-radius: 4px;
+    word-break: keep-all;
+}
+
+@keyframes enlarge{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.095);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+@keyframes greenFlash {
+    from{
+        background-color: #1b1b1b;
+        transform: scale(1) ;
+    }
+    to{
+        background-color: green;
+        transform: scale(1.025);
+    }  
+}

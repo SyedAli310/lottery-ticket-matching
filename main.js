@@ -235,7 +235,7 @@ function start(){
             setTimeout(()=>{
                 points=points+(score.length * 10)
                 if(score.length>0){
-                    timeUp.innerHTML = `<p style='color:red;'>Times Up!</p><p>You won <span style='color:green'>${(points)}</span> points. <p style='font-size:small !important;'> 10 points for each matching pair, and 5 bonus points for each consecutive matching pair</p></p>`
+                    timeUp.innerHTML = `<p style='color:red;'>Times Up!</p><p>You won <span style='color:green'>${(points)}</span> points. <p style='font-size:small !important;'> 10 points for each matching pair, and 5 bonus points for each consecutive matching pair.</p></p>`
                 }else{
                     timeUp.innerHTML = `<p style='color:red;'>Times Up!</p><p>Your won <span style='color:red'>${(points)}</span> points. <p style='font-size:small !important;'> Better luck next time☹️</p></p>`
                 }

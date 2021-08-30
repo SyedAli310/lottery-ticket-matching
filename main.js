@@ -278,6 +278,6 @@ startBtn.addEventListener('click',()=>{
     timeUp.innerHTML =``
     start()
     msg.innerHTML=`<h3 class='text-center text-success'>Matched</h3>`
-    console.log(token)
+    console.log('Lottery token: ',token)
 })
  

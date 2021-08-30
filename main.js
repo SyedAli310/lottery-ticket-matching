@@ -223,10 +223,9 @@ function start(){
     
     setTimeout(()=>{
         if(!matched){
-            time.scrollIntoView({
-                behavior: "smooth", // or "auto" or "instant"
-                block: "start" // or "end"
-            })
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $(".timeUp").offset().top
+            }, 1000);
             clearInterval(x)
             clearInterval(timer)
             counter = 0
@@ -275,6 +274,9 @@ $('.token input').on('change',(e)=>{
 
      
 startBtn.addEventListener('click',()=>{
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $("body").offset().top
+    }, 1000);
     counter=20
     score = []
     points=0

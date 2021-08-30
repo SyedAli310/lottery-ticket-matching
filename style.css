@@ -21,7 +21,12 @@ input[type=number]:focus, input[type=number]:active{
   border: 1px solid lightblue;
   outline: none;
 }
-
+#logo,#logo-img{
+    transition: all ease 500ms;
+}
+#logo:hover > #logo-img{
+    transform: rotate(360deg);
+}
 #one,#two,#three,#four,#five{
     width: 60px;
     user-select: none;

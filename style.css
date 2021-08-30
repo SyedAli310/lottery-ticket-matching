@@ -34,6 +34,17 @@ input[type=number]:focus, input[type=number]:active{
     border-radius: 4px;
     word-break: keep-all;
 }
+.err{
+    animation: disappear 5s ease forwards 1s;
+}
+
+@keyframes disappear {
+    to{
+        opacity: 0;
+        visibility: hidden;
+        display: none;
+    }
+}
 
 @keyframes enlarge{
     0%{

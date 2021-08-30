@@ -260,11 +260,11 @@ function regenerate(token){
 }
 
 $('.token input').on('change',(e)=>{
-    if(!isNaN(parseInt($(e.target).val())) && parseInt($(e.target).val()) < 100){
+    if(!isNaN(parseInt($(e.target).val())) && parseInt($(e.target).val()) < 100 && parseInt($(e.target).val()) >= 0 ) {
         token[$(e.target).index()] = parseInt($(e.target).val())
     }
-    if(parseInt($(e.target).val()) >= 100){
-        $('.info-note').append().html(`<p class='text-danger'>Please enter numbers below or euqal to 99</p>`)
+    if(parseInt($(e.target).val()) >= 100 || parseInt($(e.target).val()) < 0){
+        $('.info-note').after(`<p class='text-danger text-center err'>Please enter numbers from 0 to 99</p>`)
         displayToken()
     }
 })

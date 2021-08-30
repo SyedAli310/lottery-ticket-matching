@@ -1,4 +1,10 @@
 
+.close:active, .close:focus{
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
 /* Chrome, Safari, Edge, Opera */
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {

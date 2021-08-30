@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A simple popping game." />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdn.lordicon.com/libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="#" />
+    <link rel="icon" href="./img/pop.png" type="image/x-icon" />
+  </head>
+
+  <title>Pop-Game</title>
+
+  <body class="m-3 m-md-4 m-sm-4">
+    <div class="internet-status-container">
+      <div class="w-50 rounded my-auto p-4 text-center internet-status"></div>
+    </div>
+
+    <div class="rounded bg-dark text-secondary text-center p-2" id="header">
+      <lord-icon
+        src="https://cdn.lordicon.com/pndvzexs.json"
+        trigger="loop-on-hover"
+        colors="primary:#848484,secondary:#28A745"
+        stroke="30"
+        style="width: 150px; height: 150px"
+      >
+      </lord-icon>
+      <br />
+      <a href="./index.html" class="btn"
+        ><h1
+          class="py-2 text-success"
+          style="font-family: 'Palette Mosaic', cursive"
+        >
+          Pop-Game
+        </h1></a
+      >
+    </div>
+
+    <div class="lottery-credit-info m-2 p-2 bg-dark rounded-lg text-center">
+      <p class="text-center text-secondary mt-2"><i class="fas fa-info-circle text-primary fa-lg"></i><br>Play the game to earn points.<br> Every 5 points scored will convert to <span class="text-success">$1 credit.</span> <br> Earned credit will be added to your existing credit in the lottery match.</p>
+      <a href="../index.html" class="btn btn-sm btn-outline-secondary mb-2"><i class="fas fa-arrow-left fa-sm"></i> Back to lottery match</a>
+    </div>
+
+    <main
+      class="py-2 my-2 rounded d-flex flex-column align-items-center"
+      id="main"
+    >
+      <div class="w-100 main-game-container text-center">
+        <div
+          class="
+            select-div
+            text-center text-light
+            mt-4
+            py-2
+            bg-dark
+            rounded
+            d-flex
+            justify-content-around
+          "
+        >
+          <div class="difficulty-select-div">
+            <span class="h3">Select Level</span>
+            <br /><br />
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadioD1"
+                value="1500"
+                onclick="setDifficulty()"
+              />
+              <label class="form-check-label" for="inlineRadioD1">Easy</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadioD2"
+                value="1000"
+                onclick="setDifficulty()"
+              />
+              <label class="form-check-label" for="inlineRadioD2">Normal</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadioD3"
+                value="700"
+                onclick="setDifficulty()"
+              />
+              <label class="form-check-label" for="inlineRadioD3">Hard</label>
+            </div>
+          </div>
+
+          <div class="time-select-div">
+            <span class="h3">Select Time</span>
+            <br /><br />
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions2"
+                id="inlineRadioT1"
+                value="1"
+                onclick="setTime()"
+              />
+              <label class="form-check-label" for="inlineRadioT1">1 min</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions2"
+                id="inlineRadioT2"
+                value="2"
+                onclick="setTime()"
+              />
+              <label class="form-check-label" for="inlineRadioT2">2 min</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions2"
+                id="inlineRadioT3"
+                value="3"
+                onclick="setTime()"
+              />
+              <label class="form-check-label" for="inlineRadioT3">3 min</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="play-area-container">
+          <div class="live-score badge badge-dark">
+            <div
+              class="
+                w-100
+                d-flex
+                justify-content-between
+                align-items-center
+                p-2
+                px-4
+              "
+            >
+              <span class="h3">
+                  <span>Score:&nbsp;<span class="text-success" id="curr-score">0</span></span>
+              </span>
+
+              <!-- <div  id="difficulty"></div> -->
+
+              <span
+                class="
+                  text-center
+                  badge badge-pill badge-success
+                  d-flex
+                  align-items-center
+                  justify-content-center
+                "
+                id="time-left"
+                style="font-size: 24px"
+              >
+                <input
+                  id="minutes"
+                  type="text"
+                  readonly
+                  style="
+                    width: 2.25rem;
+                    background: transparent;
+                    border: none;
+                    outline: none;
+                    color: white;
+                    text-align: right;
+                  "
+                />
+                <span class="text-white">:</span>
+                <input
+                  id="seconds"
+                  type="text"
+                  readonly
+                  style="
+                    width: 2.25rem;
+                    background: transparent;
+                    border: none;
+                    outline: none;
+                    color: white;
+                    text-align: left;
+                  "
+                />
+              </span>
+            </div>
+          </div>
+
+          <div class="rounded bg-dark my-2" id="play-area">
+            <span class="info-msg h3 text-secondary">
+              <i class="fas fa-dice-d6 text-secondary" id="dice-loader"></i>
+              <br/><br/>
+              Press <span class="badge badge-secondary text-white">Play</span> to start.
+            </span>
+          </div>
+
+          <div id="buttons-container">
+            <button class="btn btn-success px-4" id="start">
+              <i class="fas fa-play"></i>&nbsp;Play
+            </button>
+            <button class="btn btn-danger px-4" id="stop">
+              <i
+                class="fas fa-sign-out-alt"
+                style="transform: rotateY(180deg)"
+              ></i>
+              Exit
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="
+          w-100
+          rounded
+          bg-dark
+          text-light
+          mt-2
+          p-3
+          d-flex
+          flex-column
+          align-items-center
+          justify-content-center
+        "
+        id="score"
+      >
+        <div class="w-100 text-success text-center mt-2">
+          <i
+            class="fas fa-flag-checkered fa-lg"
+            style="transform: rotate(-10deg) rotateY(180deg)"
+          ></i
+          >&nbsp;<span>Scores</span>
+          <hr class="rounded bg-secondary" />
+        </div>
+        <div class="w-100 my-2">
+          <div class="w-100 d-flex align-items-center justify-content-around">
+            <!-- <div>Score: <span class="text-success" id="curr-score">0</span></div> -->
+            <div>
+              Last Score: <span class="text-success" id="last-score">0</span>
+            </div>
+          </div>
+          <div class="text-center text-dark bg-secondary rounded p-2">
+            <span class="h4 text-light"> Recent Scores </span>
+            <div class="text-center mt-2 row" id="prev-scores">0</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="rounded bg-dark text-center text-secondary p-2 d-flex justify-content-around align-items-center">
+      <img src="./img/title.png" style="height: 20px; width: 20px;">
+      Pop-Game 
+      <img src="./img/title.png" style="height: 20px; width: 20px;">
+    </div>
+
+
+
+
+
+
+
+
+    <!-- Non-visible content -->
+
+    <div class="modal fade" id="errModal" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title text-danger">Error</h4>
+            <button type="button" class="close" data-dismiss="modal">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Please select level and time.</p>
+          </div>
+          <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="scoreModal" role="dialog">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title text-success"><i class="fas fa-medal"></i>&nbsp;Your score <span class="h5 text-secondary" id="modal-last-time"></span></h4>
+            <button type="button" class="close" data-dismiss="modal">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="modal-body" id="score-modal-body">
+            <div class="m-2 d-flex justify-content-around align-items-center">
+              <span class="h4 text-center"
+                >Points<br /><span
+                  class="px-2 badge badge-dark text-success d-flex align-items-center justify-content-center"
+                  id="modal-last-score"
+                ></span>
+              </span>
+              <span class="h4 text-center"
+                >Level<br /><span
+                  class="px-2 badge badge-dark d-flex align-items-center justify-content-center"
+                  id="modal-last-level"
+                ></span
+              ></span>
+              
+            </div>
+
+            <hr class="mx-2 bg-secondary rounded" />
+            <div class="text-center" id="performance-msg"></div>
+            <br>
+            <h5 class="text-center text-primary" id="credit-msg"></h5>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">
+              Okay!
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <audio id="pop" src="./audio/pop2.wav"></audio>
+    <audio id="miss" src="./audio/miss.mp3"></audio>
+  </body>
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <!-- Custom JavaScript -->
+  <script src="./main.js"></script>
+</html>

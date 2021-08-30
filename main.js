@@ -37,7 +37,15 @@ matched = false
 function updateCredit(credit){
     localStorage.setItem('credit', credit)
     setTimeout(()=>{
-        $('#credit').html(`<span>Credit</span><h3 class='text-success rounded bg-dark  py-1 px-2'><i class='fas fa-dollar-sign fa-sm'></i> ${localStorage.getItem('credit')}</h3>`)
+        $('#credit').html(`
+        <div class='text-success rounded bg-dark px-2 d-flex flex-column align-items-center justify-content-center'>
+            <span class='text-white'>Credit</span>
+            <div class='d-flex justify-content-center align-items-center'>
+                <h3 class='mb-1'><i class='fas fa-dollar-sign fa-sm'></i>${localStorage.getItem('credit')}</h3>
+                &nbsp;
+                <a href="./credit-earn-game/index.html" class="btn btn-sm btn-outline-success ml-1 px-1 py-0 pt-0"><i class="fas fa-plus fa-sm"></i></a>
+            </div>
+        </div>`)
     },100)
 }
 
@@ -291,7 +299,15 @@ $('.token input').on('change',(e)=>{
     }
 })
 
-$('#credit').html(`<span>Credit</span><h3 class='text-success rounded bg-dark  py-1 px-2'><i class='fas fa-dollar-sign fa-sm'></i> ${localStorage.getItem('credit')}</h3>`)
+$('#credit').html(`
+<div class='text-success rounded bg-dark px-2 d-flex flex-column align-items-center justify-content-center'>
+    <span class='text-white'>Credit</span>
+    <div class='d-flex justify-content-center align-items-center'>
+        <h3 class='mb-1'><i class='fas fa-dollar-sign fa-sm'></i>${localStorage.getItem('credit')}</h3>
+        &nbsp;
+        <a href="./credit-earn-game/index.html" class="btn btn-sm btn-outline-success ml-1 px-1 py-0 pt-0"><i class="fas fa-plus fa-sm"></i></a>
+    </div>
+</div>`)
      
 startBtn.addEventListener('click',()=>{
     if(localStorage.getItem('credit')>=10){
@@ -307,7 +323,9 @@ startBtn.addEventListener('click',()=>{
         console.log('Lottery token: ',token)
     }
     else{
-        alert('Your dont have enough credit to play the lottery.')
+        $('#errModal').modal()
     }
 })
- 
+
+
+

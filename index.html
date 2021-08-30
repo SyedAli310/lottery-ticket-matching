@@ -13,8 +13,8 @@
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-   <script src="https://cdn.lordicon.com/libs/frhvbuzj/lord-icon-2.0.2.js"></script>
-
+   
+  
    <link
     rel="stylesheet"
     href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
@@ -40,6 +40,7 @@
         </div>
 
         <div id="credit" class="text-dark text-center"></div>
+        
     </div>
 
     <hr class="bg-secondary rounded-lg">
@@ -91,6 +92,23 @@
 
     
 </main>
+
+<div class="modal fade" id="errModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Not enough credit</h5>
+          <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p class="text-danger">You don't have enough credit to play the lottery.</p>
+          <a href="./credit-earn-game/index.html" class="btn btn-success btn-sm">Earn credit</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
     
 </body>

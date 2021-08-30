@@ -269,7 +269,7 @@ function stopGame(){
         
         localStorage.setItem('credit', newCredit)
 
-        $('#score-modal-body #credit-msg').html(`$${Math.floor(parseInt(localStorage.getItem('lastScore'))/5)} credit has been added to your lottery match<br><a href='../index.html' class='btn btn-sm btn-secondary'>Go back to lottery</a>`);
+        $('#score-modal-body #credit-msg').html(`$${Math.floor(parseInt(localStorage.getItem('lastScore'))/5)} credit has been added to your lottery match.<br><br><a href='../index.html' class='btn btn-sm btn-secondary'>Go back to lottery</a>`);
 
     
         if(localStorage.getItem('lastScore')>100){

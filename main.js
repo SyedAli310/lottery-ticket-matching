@@ -20,7 +20,7 @@ let token = [34,53,45,67,99]
 var credit;
 
 if(localStorage.getItem('credit') == null || isNaN(localStorage.getItem('credit'))==true ){
-    credit = 50
+    credit = 30
     localStorage.setItem('credit', credit)
 }else{
     credit = parseInt(localStorage.getItem('credit'))

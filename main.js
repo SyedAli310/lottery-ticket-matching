@@ -19,7 +19,7 @@ let token = [34,53,45,67,99]
 
 var credit;
 
-if(localStorage.getItem('credit') == null || localStorage.getItem('credit') == 'NaN' ){
+if(localStorage.getItem('credit') == null || isNaN(localStorage.getItem('credit'))==true ){
     credit = 50
     localStorage.setItem('credit', credit)
 }else{

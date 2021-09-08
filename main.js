@@ -327,6 +327,7 @@ $('#credit').html(`
 </div>`)
 
 setInterval(() => {
+    if(!isNaN(parseInt(localStorage.getItem('credit'))))
     credit = parseInt(localStorage.getItem('credit'))
     updateCredit(credit)
 },1000);
